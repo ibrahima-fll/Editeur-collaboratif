@@ -3,7 +3,7 @@ Editeur-collaboratif
 
 Petit éditeur collaboratif avec verrouillage de fichier
 
-Le MAN de'utilisation :
+Le MAN d'utilisation :
 
 
 I – Compilation :
