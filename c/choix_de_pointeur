@@ -1,0 +1,9 @@
+la possibilités d'ouvrir plusieurs documents grâce à un système d'onglets. Pour cela, il faut sauvegarder les propriétés de chaque document ouvert
+Pour cela nous allons utiliser une structure de donnée pour chaque document ouvert qui devra garder en mémoire le chemin complet du fichier (ou NULL si le document n'est pas encore sauvegarder), s'il à était modifier depuis la dernière sauvegarde et le GtkTextView qui sert à son affichage
+Sachant que nous serons amené à stocker plusieurs occurrences de cette structure
+
+La première idée qui vient à l'esprit est un tableau alloué dynamiquement, cependant l'utilisateur peut souhaiter fermer un document qui se trouve au milieu, on est alors obligé de décaler toutes les cellules en amont. Dans ce cas il parait naturel d'utiliser une liste chaînée. Par chance la glib propose une bibliothèque de gestion des listes chaînées, cela nous fera gagner du temps le moment venu. Pour l'instant, on se contente de créer une structure de données qui contiendra tous les documents ouverts (stockée dans une GList) et un pointeur sur le document actif (actuellement comme nous n'avons qu'un document ouvert en même temps, on manipulera uniquement ce pointeur)
+
+docs_t docs = {NULL, NULL};
+comment transmettre cette structure
+Une solution plus simple est de créer une variable globale à l'ensemble du programme
